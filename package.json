@@ -1,0 +1,32 @@
+{
+  "name": "architecture-md",
+  "version": "1.0.0",
+  "description": "An in-code way to describe the architecture of a project",
+  "main": "cli/src/index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brendanarnold/architecture-md.git"
+  },
+  "keywords": [
+    "architecture",
+    "archmd",
+    "documentation",
+    "docs"
+  ],
+  "author": "Brendan Arnold",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brendanarnold/architecture-md/issues"
+  },
+  "homepage": "https://github.com/brendanarnold/architecture-md#readme",
+  "dependencies": {
+    "filehound": "^1.17.5",
+    "markdown-it": "^12.2.0"
+  }
+}

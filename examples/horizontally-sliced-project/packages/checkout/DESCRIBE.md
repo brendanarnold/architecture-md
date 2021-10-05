@@ -4,6 +4,10 @@
 
 Provides the user journey for the store checkout for users of the Cyberdyne store front.
 
+## Layer
+
+Container
+
 ## Technology
 
 - Shopify

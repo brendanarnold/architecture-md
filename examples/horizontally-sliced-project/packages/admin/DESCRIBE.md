@@ -4,6 +4,10 @@
 
 Provides the web-based administration tools for the Cyberdyne store front.
 
+## Layer
+
+Container
+
 ## Technology
 
 VueJS
