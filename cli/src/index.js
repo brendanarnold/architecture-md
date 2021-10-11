@@ -7,6 +7,8 @@ const { parseTitle } = require("./parseTitle")
 const { parseTags } = require("./parseTags")
 const { parseLayer } = require("./parseLayer")
 const { parseDescription } = require("./parseDescription")
+const { parseLinksTo } = require("./parseLinksTo")
+const parseLinkDestination = require("markdown-it/lib/helpers/parse_link_destination")
 
 const readFile = promisify(fs.readFile)
 
@@ -27,7 +29,7 @@ const config = {
   description: {
     label: "description",
   },
-  relatesTo: {
+  linksTo: {
     label: "dependencies",
   },
   layers: {
@@ -55,6 +57,7 @@ const parseSection = tokens => {
     description: parseDescription(tokens, config),
     layer: parseLayer(tokens, config),
     tags: parseTags(tokens, config),
+    linksTo: parseLinksTo(tokens, config),
   }
 }
 
@@ -62,7 +65,7 @@ const parseMarkdown = content => {
   const md = new Markdown()
   const tokens = md.parse(content)
 
-  // TODO: SUpport multiple sections
+  // TODO: Support multiple sections
   return parseSection(tokens)
 }
 
@@ -73,16 +76,13 @@ const main = async () => {
     .match(config.match)
     .findSync()
 
-  // files.forEach(f => console.log(f))
+  for (const file of files) {
+    const content = await readFile(file, "utf-8")
 
-  const content = await readFile(files[4], "utf-8")
+    const node = parseMarkdown(content)
 
-  const { title, tags, layer, description } = parseMarkdown(content)
-
-  console.log(title)
-  console.log(tags)
-  console.log(layer)
-  console.log(description)
+    console.log(node)
+  }
 }
 
 main()

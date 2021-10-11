@@ -14,5 +14,4 @@ VueJS
 
 ## Dependencies
 
-- [Notification Service](../notification-service)
-  - Send emails -> _Administrator_
+- Sends emails using [Notification Service](../notification-service)

@@ -6,6 +6,10 @@ const parseTags = (tokens, config) => {
   let tags = []
   for (const token of tokens) {
     if (token.type === "heading_open" && token.tag === "h2") {
+      if (inTagSection) {
+        inTagSection = false
+        break
+      }
       inH2Tag = true
       continue
     }
